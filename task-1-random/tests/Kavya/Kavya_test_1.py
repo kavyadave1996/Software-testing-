@@ -42,17 +42,11 @@ Setting a header to None behaves properly.
 How to Run the Test
 Install the required libraries if you haven't already:
 
-bash
-Copy
-Edit
 pip install hypothesis pytest
 Save the test file.py
 
 Run the test with:
 
-bash
-Copy
-Edit
 pytest file.py
 Hypothesis will automatically generate and run hundreds of randomized test cases to find any potential issues.
 
