@@ -1,6 +1,6 @@
 # Test Purpose: To validate that trim_filename() correctly trims filenames to a maximum allowed length, while preserving extensions when possible and without corrupting the filename structure.
 
-# Input Generation: Random filenames (strings of letters, numbers, ., _, -) and random maximum lengths.
+- Input Generation: Random filenames (strings of letters, numbers, ., _, -) and random maximum lengths.
 
 # Assertions:
 
