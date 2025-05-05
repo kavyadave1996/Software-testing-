@@ -2,6 +2,7 @@
 - It generates random binary file contents to ensure that the function correctly handles both:
 
 -✅ Valid UTF-8 text files
+
 -🚫 Invalid binary files that are not UTF-8
 
 # 🛠 Test Behavior
