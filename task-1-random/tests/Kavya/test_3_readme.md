@@ -1,5 +1,6 @@
 # This test uses the Hypothesis library to perform property-based testing on the load_text_file function.
 - It generates random binary file contents to ensure that the function correctly handles both:
+
 -✅ Valid UTF-8 text files
 -🚫 Invalid binary files that are not UTF-8
 
