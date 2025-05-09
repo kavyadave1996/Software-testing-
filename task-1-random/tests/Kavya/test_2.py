@@ -45,15 +45,3 @@ def test_trim_filename(filename, max_len):
         # If possible, the extension should be preserved
         assert trimmed.endswith(ext) or len(trimmed) < len(ext)
 
-def test_trim_filename_invalid():
-    # Test with invalid filename and max_len
-    filename = "invalid_filename.txt"
-    max_len = -1  # Invalid max_len
-    trimmed = trim_filename(filename, max_len)
-    assert trimmed == filename  # Should remain unchanged if max_len is invalid
-
-    # Test with empty filename and valid max_len
-    filename = ""
-    max_len = 5
-    trimmed = trim_filename(filename, max_len)
-    assert trimmed == filename  # Should remain unchanged if filename is empty

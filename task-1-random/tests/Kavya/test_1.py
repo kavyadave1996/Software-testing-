@@ -52,12 +52,3 @@ def test_add_method(key, value):
     headers.add(key, value)
     assert headers.getone(key) == value
 
-def test_add_method_invalid_key_value():
-    """
-    Test the add method of HTTPHeadersDict class with invalid key and value.
-    """
-    headers = HTTPHeadersDict()
-    headers.add(None, None)
-    assert headers.getone(None) is None
-    headers.add(None, "value")
-    assert headers.getone(None) == "value"

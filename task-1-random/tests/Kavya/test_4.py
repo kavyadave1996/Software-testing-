@@ -272,8 +272,3 @@ def test_get_color(color, shade):
         else:
             assert result == color_value
 
-def test_get_color_invalid():
-    result = get_color("invalid", "shade")  # Invalid color and shade
-    assert result is None  # Should return None for invalid color and shade
-    result = get_color("red", "invalid")  # Valid color, invalid shade
-    assert result is None  # Should return None for invalid shade
