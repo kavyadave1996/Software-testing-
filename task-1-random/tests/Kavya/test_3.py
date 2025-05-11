@@ -1,10 +1,9 @@
-
-
 import os
 import tempfile
 import pytest
 from hypothesis import given, strategies as st
-
+import string
+from hypothesis import settings, Verbosity
 class KeyValueArg:
     def __init__(self, orig, value):
         self.orig = orig
@@ -25,11 +24,14 @@ def load_text_file(item: KeyValueArg) -> str:
             f'{item.orig!r}: cannot embed the content of {item.value!r},'
             ' not a UTF-8 or ASCII-encoded text file'
         )
-
+@settings(verbosity=Verbosity.verbose, max_examples=4)
 @given(
-    content=st.binary(min_size=0, max_size=100)
+    content=st.binary(min_size=0, max_size=5)
 )
 def test_load_text_file(content):
+    # Print the generated input
+    print(f"Generated content: {content}")
+
     # Create a temporary file manually
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp.write(content)

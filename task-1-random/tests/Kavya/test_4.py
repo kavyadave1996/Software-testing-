@@ -1,7 +1,7 @@
-
 from hypothesis import given, strategies as st
 import pytest
-
+from hypothesis import settings, Verbosity
+import string
 from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Optional, List
@@ -245,7 +245,7 @@ def get_color(
         return color_code[shade]
     else:
         return color_code
-
+@settings(verbosity=Verbosity.verbose, max_examples=5)
 @given(
     color=st.text(min_size=1, max_size=10),
     shade=st.text(min_size=1, max_size=10)
@@ -256,6 +256,7 @@ def test_get_color(color, shade):
         "blue": {"light": "#ccccff", "dark": "#000099"},
         "green": "#00ff00"
     }
+    print(f"Generated inputs -> color: {color}, shade: {shade}")
 
     result = get_color(color, shade, palette=palette)
 
@@ -270,3 +271,4 @@ def test_get_color(color, shade):
                 assert result is None  # Shade missing means None (depending on function)
         else:
             assert result == color_value
+

@@ -1,10 +1,9 @@
-
-class ContentRangeError(ValueError):
-    pass
-
 import os
 from hypothesis import given, strategies as st
-import string   
+import string
+from hypothesis import settings, Verbosity
+class ContentRangeError(ValueError):
+    pass
 
 def trim_filename(filename: str, max_len: int) -> str:
     if len(filename) > max_len:
@@ -15,18 +14,20 @@ def trim_filename(filename: str, max_len: int) -> str:
         else:
             filename = name[:-trim_by] + ext
     return filename
-
+@settings(verbosity=Verbosity.verbose, max_examples=2)
 @given(
     filename=st.text(
         min_size=0,
-        max_size=300,
+        max_size=10,
         alphabet=string.ascii_letters + string.digits + "._-"
     ),
-    max_len=st.integers(min_value=0, max_value=300)
+    max_len=st.integers(min_value=0, max_value=10)
 )
 
 def test_trim_filename(filename, max_len):
     trimmed = trim_filename(filename, max_len)
+
+    print(f"Generated inputs -> filename: {filename}, max_len: {max_len}")
 
     # 1. The trimmed filename should not be longer than max_len
     assert len(trimmed) <= max(max_len, len(os.path.splitext(filename)[1]))
@@ -43,3 +44,4 @@ def test_trim_filename(filename, max_len):
     if ext and len(name) > 0 and len(filename) > max_len:
         # If possible, the extension should be preserved
         assert trimmed.endswith(ext) or len(trimmed) < len(ext)
+

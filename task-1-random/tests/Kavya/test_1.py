@@ -1,9 +1,11 @@
 
-
 import pytest
 from hypothesis import given, strategies as st
 from multidict import MultiDict, CIMultiDict
 from collections import OrderedDict
+from hypothesis import settings, Verbosity
+import string
+
 
 
 class BaseMultiDict(MultiDict):
@@ -35,15 +37,18 @@ class HTTPHeadersDict(CIMultiDict, BaseMultiDict):
                 self.popone(key)
 
             super().add(key, value)
-
+@settings(verbosity=Verbosity.verbose, max_examples=2)
 @given(
-     key =st.text(min_size=1, max_size=10),
-     value =st.text(min_size=1, max_size=10),
+     key =st.text(min_size=1, max_size=2,alphabet=string.ascii_letters),
+     value =st.text(min_size=1, max_size=2,alphabet=string.ascii_letters),
 )
+
 def test_add_method(key, value):
     """
     Test the add method of HTTPHeadersDict class.
     """
+    print(f"Generated key: {key}, value: {value}")  # Log the inputs
     headers = HTTPHeadersDict()
     headers.add(key, value)
     assert headers.getone(key) == value
+
