@@ -35,3 +35,13 @@ For the test 4 we used drop_key function which will block the keys that are not 
 - Covers edge cases: Handles scenarios like empty blacklists, missing keys, or removing all keys.
 
 - Prevents future bugs: Acts as a safeguard against regressions in key-filtering logic used in real-world tools.   
+
+# Test process
+To test the function we used VS code as our code editor.We installed python for our coding language.Then we set up an environment to run our code.We installed pytest, hypothesis and other necessary libraries for this test. Then we use different strategies for different functions to generate valid inputs.
+
+
+- Environment set up:conda create --name myenv python=3.10
+
+
+
+- Installing pytest:conda install pytest
