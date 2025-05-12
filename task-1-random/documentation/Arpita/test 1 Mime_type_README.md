@@ -35,4 +35,8 @@ This phase 1 of our project aims to test a function using hypothesis library and
 - Mimics realistic usage scenarios, ensuring the function works with actual formats seen in production systems.
 
 # process of the test
-To test the function we used VS code as our code editor.We installed python for our coding language.Then we set up an environment to runour code.We installed pytest, hypothesis and other necessary libraries for this test. Then we use different strategies for different functions to generate valid inputs.
+To test the function we used VS code as our code editor.We installed python for our coding language.Then we set up an environment to run our code.We installed pytest, hypothesis and other necessary libraries for this test. Then we use different strategies for different functions to generate valid inputs.
+
+- Environment set up:conda create --name myenv python=3.10
+
+- Installing pytest:conda install pytest
