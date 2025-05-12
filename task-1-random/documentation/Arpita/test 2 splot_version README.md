@@ -31,6 +31,14 @@ split_version(version):This function under test should take a string like "2.5.9
 - result is a tuple
 
  - result has exactly 3 elements
+-  Each element in the tuple is an integer
+
+ # Why the test is valuable
+ - Tests a Common Real-World Pattern
+ - Uses Randomized Input for Wide Coverage
+ - Verifies Function Contract
+
+ #Used procedure
+ 
 
 
-- Each element in the tuple is an integer
