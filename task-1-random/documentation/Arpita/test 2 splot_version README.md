@@ -38,7 +38,13 @@ split_version(version):This function under test should take a string like "2.5.9
  - Uses Randomized Input for Wide Coverage
  - Verifies Function Contract
 
- #Used procedure
- 
+ # Used procedure
+ To test the function we used VS code as our code editor.We installed python for our coding language.Then we set up an environment to run our code.We installed pytest, hypothesis and other necessary libraries for this test. Then we use different strategies for different functions to generate valid inputs.
+
+
+ - Environment set up:conda create --name myenv python=3.10
+
+
+ - Installing pytest:conda install pytest
 
 
