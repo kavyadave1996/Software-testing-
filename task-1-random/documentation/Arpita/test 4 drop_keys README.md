@@ -1,5 +1,5 @@
 # Hypothesis test for drop_keys function 
-
+For the test 4 we used drop_key function which will block the keys that are not included in the dictionary and we will test the validity of the function with hypothesis test.
 # Key Features of the Function
 
 - Input: A dictionary (config) and a tuple of keys to remove (key_blacklist)
