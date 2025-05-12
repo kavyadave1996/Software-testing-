@@ -2,7 +2,7 @@
 This phase 1 of our project aims to test a function using hypothesis library and evaluate the validity of the function. For the 1st test we are using mime_type function.
 
 
-#Key properties of the function
+> #Key properties of the function
 
 - Input is string
 
