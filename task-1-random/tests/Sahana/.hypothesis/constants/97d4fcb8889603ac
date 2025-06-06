@@ -1,0 +1,4 @@
+# file: C:\Users\Sahana Karane\Documents\TUHH\Sem4\SoftwareTesting\cli\httpie\utils.py
+# hypothesis_version: 6.131.14
+
+['"\' ', ', (?=[^ ;]+=)', '.', '/', '1 B', ';', '=', '@', 'B', 'GB', 'MB', 'PB', 'T', 'TB', '__hack__', 'base', 'expires', 'kB', 'max-age', 'name', 'path', 'purelib']
