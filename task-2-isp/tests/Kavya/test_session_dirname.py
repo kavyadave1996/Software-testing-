@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import os
 from hypothesis import given, strategies as st, settings
 from httpie.sessions import session_hostname_to_dirname  # adjust if needed
@@ -42,11 +42,4 @@ def test_session_hostname_to_dirname(hostname, session_name):
     assert ":" not in result.split(os.sep)[-2]  # Confirm port was replaced
 
 
-    expected_path = os.path.join(SESSIONS_DIR_NAME, expected_host, f"{session_name}.json")
 
-    # === Assertions ===
-    assert result == expected_path
-    assert result.startswith(SESSIONS_DIR_NAME)
-    assert result.endswith(".json")
-    assert ":" not in result.split(os.sep)[-2]  # Confirm port was replaced
->>>>>>> defb3f60c74b45f7bc485f74eaa9b46cbd88831c
