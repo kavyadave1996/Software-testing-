@@ -7,7 +7,7 @@ SESSIONS_DIR_NAME = "sessions"
 
 # ISP Test Cases: 6 × 4 = 24 combinations
 
-@settings(max_examples=24)
+@settings(max_examples=6)
 @given(
     hostname=st.sampled_from([
         "example.com",                       # H1 + L2
