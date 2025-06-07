@@ -1,11 +1,12 @@
 import os
-from hypothesis import given, strategies as st
+from hypothesis import given, strategies as st, settings
 from httpie.sessions import session_hostname_to_dirname  # adjust if needed
 
 SESSIONS_DIR_NAME = "sessions"
 
 # ISP Test Cases: 6 × 4 = 24 combinations
 
+@settings(max_examples=24)
 @given(
     hostname=st.sampled_from([
         "example.com",                       # H1 + L2
@@ -24,6 +25,8 @@ SESSIONS_DIR_NAME = "sessions"
 )
 def test_session_hostname_to_dirname(hostname, session_name):
     """ISP: Combined test of hostname and session_name partitions"""
+
+    print(f"\nTesting with: hostname='{hostname}', session_name='{session_name}'")
 
     result = session_hostname_to_dirname(hostname, session_name)
 
