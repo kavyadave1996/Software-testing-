@@ -1,0 +1,69 @@
+import os
+from hypothesis import given, strategies as st
+import string
+from hypothesis import settings, Verbosity
+class ContentRangeError(ValueError):
+    pass
+
+def trim_filename(filename: str, max_len: int) -> str:
+    if len(filename) > max_len:
+        trim_by = len(filename) - max_len
+        name, ext = os.path.splitext(filename)
+        if trim_by >= len(name):
+            filename = filename[:-trim_by]
+        else:
+            filename = name[:-trim_by] + ext
+    return filename
+@settings(verbosity=Verbosity.verbose, max_examples=2)
+@given(
+    filename=st.text(
+        min_size=0,
+        max_size=10,
+        alphabet=string.ascii_letters + string.digits + "._-"
+    ),
+    max_len=st.integers(min_value=0, max_value=10)
+)
+
+def test_trim_filename(filename, max_len):
+    trimmed = trim_filename(filename, max_len)
+
+    print(f"Generated inputs -> filename: {filename}, max_len: {max_len}")
+
+    # 1. The trimmed filename should not be longer than max_len
+    assert len(trimmed) <= max(max_len, len(os.path.splitext(filename)[1]))
+
+    # 2. If the filename was already short enough, it should remain the same
+    if len(filename) <= max_len:
+        assert trimmed == filename
+
+    # 3. The trimmed filename should still contain only characters from the original
+    assert set(trimmed).issubset(set(filename))
+
+    # 4. If the original had an extension, the trimmed filename should still end with that extension (unless fully trimmed)
+    name, ext = os.path.splitext(filename)
+    # If possible, the extension should be preserved
+    if ext and len(name) > 0 and len(filename) > max_len:
+    # Either it ends with the extension OR wasn't long enough to preserve it
+        assert trimmed.endswith(ext) or len(trimmed) <= len(ext)
+
+def test_trim_filename_full_trim():
+    filename = "abc.txt"
+    max_len = 2  # Less than length of "abc"
+    trimmed = trim_filename(filename, max_len)
+    assert len(trimmed) <= max_len
+
+def test_trim_filename_no_extension():
+    filename = "abcdef"
+    max_len = 3
+    trimmed = trim_filename(filename, max_len)
+    assert len(trimmed) <= max_len
+    assert not trimmed.endswith('.txt')  # no extension to preserve
+
+def test_trim_filename_zero_max_len():
+    filename = "file.txt"
+    max_len = 0
+    trimmed = trim_filename(filename, max_len)
+    assert trimmed == '' or len(trimmed) <= max_len
+
+
+
