@@ -51,7 +51,7 @@ cd group-04 and open the terminal type in foloowing 3 commands:
 1. Run the test file to kae sure all the test cases passed 
 
 # To execute the tests including the new ones:
-1. Go to cd code/cli/tests and type in  : "pytest test_implicant_process_auth.py"
+1. Open terminal and go to cd code/cli/tests and type in  : "pytest test_implicant_process_auth.py"
 
 # Final step is to run the entire project suite including the newly added test cases to see any changes in the coverage percentage
 cd group-04 and open the terminal type in folowing 3 commands:
