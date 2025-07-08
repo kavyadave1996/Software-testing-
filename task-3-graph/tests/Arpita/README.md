@@ -18,7 +18,4 @@ This phase evaluates and improves test coverage for selected components of the H
 | `coverage.py` | To measure statement and branch coverage |
 | `pytest-cov`| Integration of coverage with pytest |
 
----
-
-## 📁 Project Structure
 
