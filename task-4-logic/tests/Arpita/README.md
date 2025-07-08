@@ -25,7 +25,14 @@ File: httpie/status.py
 
 This function determines the correct program exit code based on HTTP status codes and the follow flag.
 
-🧪 Running the Tests
+##🧪 Running the Tests
 🔹 Run Only the Logic Coverage Tests
+
 cd code/cli/tests
 pytest test_http_status_logic_coverage.py
+🔹 Run All Tests with Coverage
+
+cd group-04
+coverage run --source=. -m pytest
+coverage report -m
+coverage html
